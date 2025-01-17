@@ -1,11 +1,27 @@
 " General
 "
 " ------------------------------------
+set nocompatible " not like you, vi!
+
+" core parameters
+" enable syntax highlighting
+syntax enable
+syntax on
+autocmd StdinReadPre * let s:std_in=1
+" Start NERDTree and put the cursor back in the other window.
+autocmd VimEnter * NERDTree | wincmd p
+set re=0 " for typescript and jsx redraw time error
+
+" searching
+set hlsearch " highlight matches
+set incsearch " incremental searching
+set ignorecase " searches are case insensitive...
+set showmatch " jump to match
+set smartcase " ... Unless they contain at least one capital letter
+set mouse=a " enable mouse support 
 
 set modelines=0 " prevent some security exploits w/modelines
 
-" no compatibility with legacy vi
-set nocompatible
 
 " backups
 set nobackup " don't make backup files
@@ -16,64 +32,14 @@ set encoding=utf-8
 
 " Plugins
 " ------------------------------------
-" Required for vundle
+" Required for Vundle
 filetype off
-" Enable fzf
-set rtp+=~/.vim/bundle/fzf.vim/
-set rtp+=~/.vim/bundle/Vundle.vim/
-call vundle#rc()
 
-" let Vundle manage Vundle, required
-Plugin 'gmarik/vundle'
-
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'w0rp/ale'
-Plugin 'itchyny/lightline.vim'
-Plugin 'maximbaz/lightline-ale'
-Plugin 'tpope/vim-repeat'
-Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-fugitive'
-Plugin 'junegunn/fzf.vim'
-Plugin 'sheerun/vim-polyglot'
-Plugin 'tpope/vim-commentary'
-Plugin 'psf/black'
-Plugin 'ledger/vim-ledger'
-
-let g:lightline = {
-      \ 'colorscheme': 'solarized',
-      \ }
-
-let g:lightline.component_expand = {
-      \  'linter_checking': 'lightline#ale#checking',
-      \  'linter_warnings': 'lightline#ale#warnings',
-      \  'linter_errors': 'lightline#ale#errors',
-      \  'linter_ok': 'lightline#ale#ok',
-      \ }
-
-let g:lightline.component_type = {
-      \     'linter_checking': 'left',
-      \     'linter_warnings': 'warning',
-      \     'linter_errors': 'error',
-      \     'linter_ok': 'left',
-      \ }
-
-let g:lightline.active = { 'right': [['lineinfo', 'percent', 'fileformat', 'fileencoding', 'filetype', 'linter_ok', 'linter_checking', 'linter_errors', 'linter_warnings']] }
-
-let g:ale_python_flake8_options = '--ignore="W391" --max-line-length=88'
-let g:ale_yaml_yamllint_options = '{extends: default,rules: {line-length: disable, indentation: {indent-sequences: consistent}}}'
-
-filetype plugin indent on " load file type plugins + indentation
 
 " Colors and fonts
 " ------------------------------------
 
-" enable syntax highlighting
-syntax enable
-syntax on
 
-set background=light
-colorscheme solarized
-let g:solarized_visibility="low"
 
 " User interface
 " ------------------------------------
@@ -90,7 +56,7 @@ set ruler " show cursor position all the time
 set nojoinspaces " Do not insert 2 spaces after sentences when joining
 set ttyfast " Improve smoothness of redraw for newer terminals
 set whichwrap+=h,l " Allow cursor keys to line wrap
-
+set noerrorbells " disable the ping
 set showmode " show what mode we're in
 set showcmd " display incomplete commands
 set wildmenu " better tab-completion for commands
@@ -109,13 +75,6 @@ set statusline=%F\ %m%r%w%y\ %{fugitive#statusline()}\ %=(%L\ loc)\ [#\%03.3b\ 0
 set list
 set listchars=nbsp:·,eol:↵,extends:>,precedes:<,tab:\|\
 
-" searching
-set hlsearch " highlight matches
-set incsearch " incremental searching
-set ignorecase " searches are case insensitive...
-set showmatch " jump to match
-set smartcase " ... unless they contain at least one capital letter
-
 " Text handling
 " ------------------------------------
 
@@ -127,6 +86,7 @@ set shiftwidth=4 " an indent is 4 spaces
 set smarttab " don't need this?
 set softtabstop=4
 set nowrap " don't wrap lines
+
 
 " Indent bulleted lists properly
 set comments=://,b:#,:%,:XCOMM,n:>,fb:-,fb:*
@@ -148,3 +108,57 @@ nnoremap <silent> <CR> :noh<CR>
 " Ctrl+P fuzzy file finding
 noremap <C-p> :Files<Cr>
 
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
+
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+
+" The following are examples of different formats supported.
+" Keep Plugin commands between vundle#begin/end.
+" plugin on GitHub repo
+Plugin 'tpope/vim-fugitive'
+" The sparkup vim script is in a subdirectory of this repo called vim.
+" Pass the path to set the runtimepath properly.
+Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
+" Install L9 and avoid a Naming conflict if you've already installed a
+" different version somewhere else.
+" Plugin 'ascenator/L9', {'name': 'newL9'}
+
+" fzf
+Plugin 'junegunn/fzf'
+
+" nerdtree
+Plugin 'preservim/nerdtree'
+" tagbar
+Plugin 'majutsushi/tagbar'
+"vim surround
+Plugin 'tpope/vim-surround'
+" git nerdtree integration
+Plugin 'xuyuanp/nerdtree-git-plugin'
+" the above relies on the below
+Plugin 'tiagofumo/vim-nerdtree-syntax-highlight'
+" linting
+Plugin 'dense-analysis/ale'
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+execute pathogen#infect()
+filetype plugin indent on    " required
+" To ignore plugin indent changes, instead use:
+"filetype plugin on
+"
+" Brief help
+" :PluginList       - lists configured plugins
+" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
+" :PluginSearch foo - searches for foo; append `!` to refresh local cache
+" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+"
+" see :h vundle for more details or wiki for FAQ
+" Put your non-Plugin stuff after this line
+
+" debugging
+packadd termdebug
