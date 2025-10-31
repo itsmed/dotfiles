@@ -1,0 +1,33 @@
+# kubectl
+alias k="kubectl"
+alias kdelp="kubectl delete pod"
+alias kdp="kubectl describe pod"
+alias kga="kubectl get all"
+alias kgp="kubectl get pods"
+alias kless="kubectl logs | less"
+alias kns="kubectl get ns"
+alias ktail="kubectl logs --tail=10 --follow"
+
+# ls
+alias la="ls -la"
+alias ll="ls -lh"
+
+# mkdir
+mkd() {
+  mkdir "$1"
+  cd "$1"
+}
+
+# git
+alias ga="git add"
+alias gbr="git branch"
+alias gcm="git commit"
+alias gco="git checkout"
+alias gdf="git diff --staged"
+alias gl="git log --pretty=format: '%h %ad | %s%d [%an]' --stat --date=short -E"
+alias gnb="git checkout -b"
+alias gpo="git pull origin "
+alias gpff="git pull --ff-only"
+alias gst="git status"
+# only show my commits
+alias gmy="git log --pretty=format: '%h %ad | %s%d [%an]' --stat --date=short -E -committer='Dejon Gill'"

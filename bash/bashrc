@@ -1,0 +1,6 @@
+if [ -f ~/.bash/aliases ]; then
+    source ~/.bash_aliases
+fi
+if [ -f ~/.bash/config ]; then
+    source ~/.bash_config
+fi
