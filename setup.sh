@@ -6,6 +6,7 @@ FLAVOR=$(uname -s)
 if [ "$FLAVOR" = "Darwin" ]; then
   echo "Working on a Mac";
   mac/install-brew.sh;
+  mac/omz.sh
   bash/install.sh
 elif [ "$FLAVOR" = "Linux" ]; then
   echo "Working on Linux";
