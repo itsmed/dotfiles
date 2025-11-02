@@ -14,3 +14,6 @@ else
   echo "This script only works on Linux or Mac, not $FLAVOR";
   exit 0;
 fi
+
+echo "symlinking gitconfig"
+ln -sf $(pwd)/gitconfig "$HOME/.gitconfig"

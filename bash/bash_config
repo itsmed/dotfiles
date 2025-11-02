@@ -13,6 +13,9 @@ HISTIGNORE='ls:bg:fg:history'
 HISTTIMEFORMAT='%F %T '
 PROMPT_COMMAND="history -a; history -c; history -r;"
 
+# enable gpg agent and tty
+export GPG_TTY=$(tty)
+
 # directory options
 shopt -s cdspell
 
