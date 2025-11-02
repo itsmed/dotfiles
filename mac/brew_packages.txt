@@ -1,5 +1,4 @@
 age
-argocd
 atlas
 autoconf
 brotli
@@ -20,6 +19,7 @@ go
 go-task
 golangci-lint
 gomplate
+gpg
 helm
 htop
 icu4c@77
