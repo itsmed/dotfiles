@@ -48,7 +48,6 @@ libuv
 libyaml
 lz4
 m4
-mercurial
 mpdecimal
 ncurses
 nettle
@@ -62,9 +61,8 @@ pinentry
 pinentry-mac
 pipx
 pkgconf
-pre-commit
+pre-eommit
 pyenv
-python@3.13
 readline
 ripgrep
 rover
