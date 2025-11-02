@@ -18,6 +18,9 @@ mkd() {
   cd "$1"
 }
 
+# clear
+alias cl="clear"
+
 # git
 alias ga="git add"
 alias gbr="git branch"
@@ -26,8 +29,8 @@ alias gco="git checkout"
 alias gdf="git diff --staged"
 alias gl="git log --pretty=format: '%h %ad | %s%d [%an]' --stat --date=short -E"
 alias gnb="git checkout -b"
-alias gpo="git pull origin "
 alias gpff="git pull --ff-only"
+alias gplom="git pull origin main"
 alias gst="git status"
 # only show my commits
 alias gmy="git log --pretty=format: '%h %ad | %s%d [%an]' --stat --date=short -E -committer='Dejon Gill'"
