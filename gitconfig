@@ -1,0 +1,16 @@
+[user]
+signingkey = 3AE933E301654719
+	name = Dejon Gill
+ 	email = dejonjgill@gmail.com
+[commit]
+	gpgsign = true
+[core]
+	editor = vim
+[init]
+	defaultBranch = main
+[gpg]
+    program = gpg
+[credential]
+    helper = osxkeychain
+[http]
+	postBuffer = 157286400
