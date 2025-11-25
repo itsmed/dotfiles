@@ -23,6 +23,7 @@ gomplate
 gpg
 helm
 htop
+httpie
 icu4c@77
 jansson
 jq
